@@ -1,0 +1,29 @@
+name: Hatena Auto Post
+
+on:
+  workflow_dispatch:   # 手動実行できるようにする
+  schedule:
+    - cron: '0 9 * * *'   # 毎朝9時に自動実行（UTC基準なので日本時間18時）
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run script
+        env:
+          HATENA_ID: ${{ secrets.HATENA_ID }}
+          BLOG_ID: ${{ secrets.BLOG_ID }}
+          HATENA_API_KEY: ${{ secrets.HATENA_API_KEY }}
+        run: python post.py
