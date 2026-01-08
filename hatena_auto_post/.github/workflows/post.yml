@@ -1,6 +1,8 @@
 name: Hatena Auto Post
 
 on:
+  push:
+    branches: [main]
   schedule:
     - cron: '0 10 * * 1'   # 毎週月曜19時（KST）
     - cron: '0 10 * * 4'   # 毎週木曜19時（KST）
