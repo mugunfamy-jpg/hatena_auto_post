@@ -4,7 +4,7 @@ on:
   schedule:
     - cron: '0 10 * * 1'   # 毎週月曜19時（KST）
     - cron: '0 10 * * 4'   # 毎週木曜19時（KST）
-  workflow_dispatch:        # 手動実行を有効化
+  workflow_dispatch:        # 手動実行も可能
 
 jobs:
   build:
